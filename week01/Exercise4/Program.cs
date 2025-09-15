@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 class Program
@@ -12,12 +13,24 @@ class Program
         while (input != 0)
         {
             Console.Write("Enter number: ");
-            input = int.Parse(Console.ReadLine());
+            string userInput = Console.ReadLine();
+            if (!int.TryParse(userInput, out input))
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer.");
+                continue;
+            }
 
             if (input != 0) // don't add the 0
             {
                 numbers.Add(input);
             }
+        }
+
+        // Double-check, print the list of numbers
+        Console.WriteLine("You entered the following numbers:");
+        foreach (int number in numbers)
+        {
+            Console.WriteLine(number);
         }
 
         // Calculate the sum
@@ -27,8 +40,12 @@ class Program
             sum += number;
         }
 
+        // Display the sum
+        Console.WriteLine($"The sum is: {sum}");
+
         // Calculate the average
         double average = (double)sum / numbers.Count;
+        Console.WriteLine($"The average is: {average}"); // Display the average
 
         // Find the largest number
         int max = numbers[0];
@@ -39,9 +56,27 @@ class Program
                 max = number;
             }
         }
-
-        Console.WriteLine($"The sum is: {sum}");
-        Console.WriteLine($"The average is: {average}");
+        // Display the largest number
         Console.WriteLine($"The largest number is: {max}");
+
+        // Find the smallest number
+        int min = int.MaxValue;
+        foreach (int number in numbers)
+        {
+            if (number > 0 && number < min)
+            {
+                min = number;
+            }
+        }
+
+        // Display the smallest number
+        if (min == int.MaxValue)
+        {
+            Console.WriteLine("No positive numbers were entered.");
+        }
+        else
+        {
+            Console.WriteLine($"The smallest positive number is: {min}");
+        }
     }
 }
