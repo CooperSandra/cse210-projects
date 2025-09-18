@@ -39,7 +39,7 @@ class Program
             {
                 case "1":
                     string promptText = prompt.GetRandomPrompt();
-                    Console.WriteLine($"Prompt: " + prompt);
+                    Console.WriteLine($"Prompt: " + promptText);
                     Console.Write("Your response: ");
                     string response = Console.ReadLine();
 
