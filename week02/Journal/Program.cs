@@ -1,16 +1,3 @@
-/* 
-Program.cs
-Author: Sandra Cooper
-Date: 2024-06-10
-
-Description:
-This is the main entry point for the Journal application. It initializes the program 
-and provides a simple user interface to interact with journal entries.
-
-Exceeding Requirements:
-- Added an auto-save feature that saves the journal to a default file upon exiting the program.
-*/
-
 using System;
 
 class Program
@@ -18,19 +5,20 @@ class Program
     static void Main(string[] args)
     {
         Journal journal = new Journal();
-        JournalPrompt prompt = new JournalPrompt();
+        JournalPrompts journals = new JournalPrompts();
 
         bool running = true;
+
         while (running)
         {
             Console.WriteLine("Welcome to the Journal Program!");
-            Console.WriteLine("Please choose an option:");
-            Console.WriteLine("\nMenu Options:");
+            Console.WriteLine("Please select one of the following choices:");
             Console.WriteLine("1. Write");
             Console.WriteLine("2. Display");
-            Console.WriteLine("3. Save");
-            Console.WriteLine("4. Load");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("3. Load");
+            Console.WriteLine("4. Save");
+            Console.WriteLine("5. Quit");
+            Console.Write("What would you like to do? ");
 
             string choice = Console.ReadLine();
             Console.WriteLine();
@@ -38,36 +26,36 @@ class Program
             switch (choice)
             {
                 case "1":
-                    string promptText = prompt.GetRandomPrompt();
-                    Console.WriteLine($"Prompt: " + promptText);
+                    string prompt = journals.GetRandomPrompt();
+                    Console.WriteLine("Prompt: " + prompt);
                     Console.Write("Your response: ");
                     string response = Console.ReadLine();
 
-                    Entry newEntry = new Entry(DateTime.Now.ToShortDateString(), promptText, response);
+                    Entry newEntry = new Entry(DateTime.Now.ToString("yyyy-MM-dd"), prompt, response);
+
                     journal.AddEntry(newEntry);
                     Console.WriteLine("Entry added!\n");
                     break;
 
                 case "2":
-                    journal.DisplayAll();
+                    journal.DisplayEntries();
                     break;
 
                 case "3":
-                    Console.Write("Enter filename to save: ");
-                    string saveFile = Console.ReadLine();
-                    journal.SaveToFile(saveFile);
+                    Console.Write("Enter the filename to load: ");
+                    string loadFilename = Console.ReadLine();
+                    journal.LoadFromFile(loadFilename);
                     break;
 
                 case "4":
-                    Console.Write("Enter filename to load: ");
-                    string loadFile = Console.ReadLine();
-                    journal.LoadFromFile(loadFile);
+                    Console.Write("Enter the filename to save: ");
+                    string saveFilename = Console.ReadLine();
+                    journal.SaveToFile(saveFilename);
                     break;
 
                 case "5":
-                    journal.AutoSave(); // Auto-save feature added on exit
                     running = false;
-                    Console.WriteLine("Goodbye! Journal saved automatically");
+                    Console.WriteLine("Goodbye!");
                     break;
 
                 default:
@@ -75,8 +63,6 @@ class Program
                     break;
             }
         }
+
     }
-
-
-    
 }

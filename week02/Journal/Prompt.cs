@@ -1,32 +1,27 @@
 using System;
 using System.Collections.Generic;
 
-public class JournalPrompt
+public class JournalPrompts
 {
-    private List<string> _prompts = new List<string>
+    private List<string> prompts = new List<string>
     {
-        "Who was the most interesting person you interacted with today?",
-        "Describe what positive impact they had on your day.",
-        "How did you see the hand of the Lord in your life today?",
-        "What was the strongest emotion you felt today?",
-        "What was the best part of your day?",
-        "What are you grateful for today?",
-        "Describe a challenge you faced today and how you overcame it.",
-        "What is something new you learned today?",
-        "Reflect on a moment that made you smile today.",
-        "What is a goal you have for tomorrow?",
-        "How did you show kindness to someone today?",
-        "What is something you wish you had done differently today?",
-        "What is something you did today that you're proud of?",
-        "How did you take care of yourself today?",
-        "What is a favorite memory that came to mind today?"
+        "Think about the moments in your past that make you feel agitated and uneasy. List those moments: ",
+        "List the moments that give you a feeling of peace and well-being: ",
+        "Look at the present moment. What is causing you to feel agitated or uneasy right now? ",
+        "Think about the future. What are your hopes and dreams that make you feel peaceful and content? ",
+        "Look at the people in your life who you feel the safest with. List those people: ",
+        "Think about the places where you feel the safest and most at peace. List those places: ",
+        "Think about the activities that make you feel calm and centered. List those activities: ",
+        "How can you bring more of those peaceful moments into your daily life? ",
+        "What are your gifts to the world? ",
+        "What are you most grateful for in your life? ",
+        "What can you do to reject negativity and embrace positivity? ",
+        "What are some positive affirmations you can tell yourself daily? ",
     };
-
-    private Random _random = new Random();
-
+    private Random random = new Random();
     public string GetRandomPrompt()
     {
-        int index = _random.Next(_prompts.Count);
-        return _prompts[index];
+        int index = random.Next(prompts.Count);
+        return prompts[index];
     }
 }

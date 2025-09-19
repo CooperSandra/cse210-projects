@@ -1,70 +1,72 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Collections.Generic;
 
 public class Journal
 {
-    private List<Entry> _entries = new List<Entry>();
-    private string _autoSaveFile = "journal_autosave.txt";
+    private List<Entry> entries = new List<Entry>();
+    private string autoSaveFile = "journalAutoSave.txt"; // default autosave file
 
     public void AddEntry(Entry newEntry)
     {
-        _entries.Add(newEntry);
+        entries.Add(newEntry);
     }
 
-    public void DisplayAll()
+    public void DisplayEntries()
     {
-        if (_entries.Count == 0)
+        if (entries.Count == 0)
         {
-            Console.WriteLine("No entries Found.\n");
+            Console.WriteLine("No entries to display.\n");
             return;
         }
 
-        foreach (Entry entry in _entries)
+        foreach (Entry entry in entries)
         {
             entry.Display();
         }
     }
 
-    public void SaveToFile(string file)
+    public void SaveToFile(string File)
     {
-        using (StreamWriter writer = new StreamWriter(file))
+        using (StreamWriter writer = new StreamWriter(File))
         {
-            foreach (Entry entry in _entries)
+            foreach (Entry entry in entries)
             {
                 writer.WriteLine(entry.ToFileString());
             }
         }
-        Console.WriteLine($"Journal saved to {file}\n");
+        Console.WriteLine($"Journal saved to {File}\n");
     }
 
     public void LoadFromFile(string file)
     {
         if (!File.Exists(file))
         {
-            Console.WriteLine($"File {file} not found.\n");
+            Console.WriteLine("File not found.\n");
             return;
         }
-        
-        _entries.Clear();
-            foreach (String line in File.ReadAllLines(file))
+
+        entries.Clear();
+        foreach (string line in File.ReadAllLines(file))
+        {
+            Entry entry = Entry.FromFileString(line);
+            if (entry != null)
             {
-                Entry entry = Entry.FromFileString(line);
-                    {
-                        _entries.Add(entry);
-                    }
+                entries.Add(entry);
             }
-            Console.WriteLine($"Journal loaded from {file}\n");
         }
+        Console.WriteLine($"Journal loaded from {file}\n");
+    }
+
     public void AutoSave()
     {
-         using (StreamWriter writer = new StreamWriter(_autoSaveFile))
+        using (StreamWriter writer = new StreamWriter(autoSaveFile))
         {
-        foreach (Entry entry in _entries)
+            foreach (Entry entry in entries)
             {
                 writer.WriteLine(entry.ToFileString());
             }
-       }
-        Console.WriteLine($"[Auto-Save] Journal saved to {_autoSaveFile}\n");
-     }
+        }
+        Console.WriteLine($"Journal saved to {autoSaveFile}\n");
+    }
 }
