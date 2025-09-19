@@ -1,3 +1,12 @@
+/*
+Author: Sandra Louise Cooper
+Date: 9/18/2025
+Description: A simple journal program that allows users to 
+write, display, load, and save journal entries with prompts.
+Each entry includes a date, a prompt, and the user's response.
+The program also features an autosave functionality to prevent data loss.
+*/
+
 using System;
 
 class Program

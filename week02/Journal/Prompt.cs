@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class JournalPrompts
 {
-    private List<string> prompts = new List<string>
+    private List<string> _prompts = new List<string>
     {
         "Think about the moments in your past that make you feel agitated and uneasy. List those moments: ",
         "List the moments that give you a feeling of peace and well-being: ",
@@ -18,10 +18,10 @@ public class JournalPrompts
         "What can you do to reject negativity and embrace positivity? ",
         "What are some positive affirmations you can tell yourself daily? ",
     };
-    private Random random = new Random();
+    private Random _random = new Random();
     public string GetRandomPrompt()
     {
-        int index = random.Next(prompts.Count);
-        return prompts[index];
+        int index = _random.Next(_prompts.Count);
+        return _prompts[index];
     }
 }
