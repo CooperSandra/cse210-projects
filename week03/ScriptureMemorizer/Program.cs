@@ -21,7 +21,7 @@ class Program
                 break;
             }
 
-            scripture.HideRandomWords(3);
+            scripture.HideRandomWords(4);
         }
 
         ConsoleClear();
