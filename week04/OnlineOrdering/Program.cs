@@ -13,8 +13,8 @@ class Program
         Address address2 = new Address("51 Bay Street", "Toronto", "ON", "Canada");
         Customer customer2 = new Customer("Kenan Swain", address2);
         Order order2 = new Order(customer2);
-        order1.AddProduct(new Product("Acer Gaming Desktop", "i7-14700F", 1494.99, 1));
-        order1.AddProduct(new Product("Samsung Odyssey Monitor", "6549291", 1499.99, 1));
+        order2.AddProduct(new Product("Acer Gaming Desktop", "i7-14700F", 1494.99, 1));
+        order2.AddProduct(new Product("Samsung Odyssey Monitor", "6549291", 1499.99, 1));
 
         DisplayOrder(order1);
         DisplayOrder(order2);
