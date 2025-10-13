@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+
+public class ListingActivity : Activity
+{
+    private int _count;
+
+    private List<string> _prompts = new List<string>
+    {
+        
+
+    };
+
+    public ListingActivity()
+        : base("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.")
+    {
+    }
+
+    public void Run()
+    {
+        DisplayStartingMessage();
+
+        Console.WriteLine("List as many responses as you can to the following prompt(s)");
+        Console.WriteLine($"{GetRandomPrompt()}");
+        Console.Write("");
+        ShowCountDown(5);
+        Console.WriteLine();
+
+        List<string> responses = GetListFromUser();
+
+        _count = responses.Count;
+        Console.WriteLine($"\nYou listed {_count} items.");
+
+        DisplayEndingMessage();
+    }
+
+    private string GetRandomPrompt()
+    {
+        Random rand = new Random();
+        return _prompts[rand.Next(_prompts.Count)];
+    }
+
+    private List<string> GetListFromUser()
+    {
+        List<string> responses = new List<string>();
+        DateTime end = DateTime.Now.AddSeconds(_duration);
+
+        while (DateTime.Now < end)
+        {
+            Console.Write("> ");
+            string input = Console.ReadLine() ?? "";
+            if (!string.IsNullOrWhiteSpace(input))
+                responses.Add(input);
+        }
+        return responses;
+    }
+   
+}
