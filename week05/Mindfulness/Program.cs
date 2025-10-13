@@ -6,7 +6,8 @@ class Program
     {
         while (true)
         {
-            Console.Clear();
+            try { Console.Clear(); }
+            catch (IOException) { }
             Console.WriteLine("---Menu Options:---");
             Console.WriteLine("1. Breathing Activity");
             Console.WriteLine("2. Listing Activity");
@@ -31,7 +32,7 @@ class Program
                     Console.WriteLine("Goodbye! Remember to practice mindfulness.");
                     break;
                 default:
-                    Console.WriteLine("Invalid choice, please try again.");
+                    Console.WriteLine("Invalid choice, try again.");
                     break;
             }
         }

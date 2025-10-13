@@ -17,8 +17,8 @@ public class BreathingActivity : Activity
             Console.Write("Breathe in...");
             ShowCountDown(4);
 
-            Console.Write("Breathe out...");
-            ShowCountDown(4);
+            Console.Write("\nBreathe out...");
+            ShowCountDown(6);
 
             Console.WriteLine("\n");
         }

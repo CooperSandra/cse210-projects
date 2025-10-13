@@ -15,7 +15,8 @@ public class Activity
 
     public void DisplayStartingMessage()
     {
-        Console.Clear();
+        try { Console.Clear(); }
+        catch (IOException) { }
         Console.WriteLine($"Welcome to the {_name} Activity. \n");
         Console.WriteLine(_description);
         Console.Write("\nHow long, (in seconds) would you like for your session: ");
