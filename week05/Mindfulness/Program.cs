@@ -13,7 +13,7 @@ class Program
             Console.WriteLine("2. Listing Activity");
             Console.WriteLine("3. Reflecting Activity");
             Console.WriteLine("4. Quit");
-            Console.WriteLine("Select a choice from the menu:");
+            Console.WriteLine("\nSelect a choice from the menu:");
 
             string choice = Console.ReadLine() ?? "";
 
@@ -30,7 +30,7 @@ class Program
                     break;
                 case "4":
                     Console.WriteLine("Goodbye! Remember to practice mindfulness.");
-                    break;
+                    return;
                 default:
                     Console.WriteLine("Invalid choice, try again.");
                     break;

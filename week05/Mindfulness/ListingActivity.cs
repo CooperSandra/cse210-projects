@@ -23,9 +23,9 @@ public class ListingActivity : Activity
     {
         DisplayStartingMessage();
 
-        Console.WriteLine("List as many responses as you can to the following prompt(s)");
+        Console.WriteLine("List as many responses as you can to the following prompt(s):");
         Console.WriteLine($"{GetRandomPrompt()}");
-        Console.Write("");
+        Console.Write("You may begin in: ");
         ShowCountDown(5);
         Console.WriteLine();
 

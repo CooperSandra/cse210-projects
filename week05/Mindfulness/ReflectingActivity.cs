@@ -8,7 +8,8 @@ public class ReflectingActivity : Activity
         "Think of a time when you stood up for someone else.",
         "Think of a time when you did something really difficult.",
         "Think of a time when you helped someone in need.",
-        "Think of a time when you did something truly selfless."
+        "Think of a time when you did something truly selfless.",
+        "Remember a personal growth or change"
     };
 
     private List<string> _questions = new List<string>
