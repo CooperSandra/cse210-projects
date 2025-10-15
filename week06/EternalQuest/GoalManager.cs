@@ -294,7 +294,7 @@ public class GoalManager
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Faile to parse line: {line} ->{ex.Message}");
+            Console.WriteLine($"Failed to parse line: {line} ->{ex.Message}");
         }
         return null;
     }
